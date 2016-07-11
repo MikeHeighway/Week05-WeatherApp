@@ -9,16 +9,37 @@
 // Button targets background city image in <body>
 // Background is changed to appropriate city image
 
+//Delay
+// $(document).ready(function (){
 
-//Prevent Default
-$( "#mainform" ).submit(function( event ) {
-  event.preventDefault();
-});
+	//Prevent Default
+	$( "#main-form" ).submit(function( event ){
+	  event.preventDefault();
+	});
+	
+	//Change Image
+	$("#submit-btn").click(function( event ){
+		// Test to see if button works 
+		// alert("Hello");
+	
+		// Collecting value from input field "city-type", remove spaces
+		var city=$("#city-type").val().toLowerCase().trim();
+	
+		// Allow names outside of class names
+		if (city=="nyc" || city=="new york" || city=="new york city") {
+				city="nyc";
+		} else	if (city=="sf" || city=="san francisco" || city=="san fran") {
+				city="sf";
+		} else 	if (city=="la" || city=="los angeles" || city=="the city of angels") {
+				city="la";
+		}	else 	if (city=="austin" || city =="sxsw") {
+				city="austin";
+		}	else 	if (city=="denver" || city =="dnvr" || city=="mile high") {
+				city="denver";
+		} else if (city=="sydney") {
+				city="sydney";
+		}
+	
+		$("body").attr("class", city);
+	});
 
-
-//Change Image
-$("#submit-btn").click(function( event ){
-	// Test to see if button works 
-	// alert("Hello");
-	$("body").html("background", url("img/nyc.jpg");
-});
